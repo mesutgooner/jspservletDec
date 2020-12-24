@@ -1,5 +1,6 @@
 package org.example.controller.web;
 
+import org.example.model.NewsModel;
 import org.example.service.iCategoryService;
 import org.example.service.iNewsService;
 
@@ -23,8 +24,7 @@ public class HomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long categoryId = 1L;
-        req.setAttribute("news",newsService.findByCategory(categoryId));
+        req.setAttribute("categories",categoryService.findAll());
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/web/home.jsp");
         requestDispatcher.forward(req,resp);
     }
